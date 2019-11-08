@@ -1,0 +1,48 @@
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap">;
+
+.fancy-header {
+    color: purple;
+    text-decoration: underline;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    color:aqua;
+    text-decoration:underline;
+}
+
+body {
+    background-color: gray;
+    background-image: url("https://images.pexels.com/photos/373076/pexels-photo-373076.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=500&w=800");
+}
+ul {
+    list-style: square inside;
+}
+
+body {
+    font-family: "Indie+Flower";
+
+}
+
+table, tr, td, th {
+    padding: 20px
+    font-size: x-large;
+}
+
+a:link {
+    color: darkmagenta;
+}
+
+a:hover {
+    color: chartreuse;
+
+}
+
+a:active {
+
+}
+
