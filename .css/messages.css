@@ -26,9 +26,11 @@ body, html {
 }
 
 message-warning{
-    color:
+    color: #8B770D
+    background-color: #FCFAC9
 }
 
 message-error{
-
+    color: #9e4157
+    background-color: #fad2d7
 }
