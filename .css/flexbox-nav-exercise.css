@@ -23,4 +23,34 @@ nav a{
     color: black;
     text-decoration: underline none;
 
+nav a:hover{
+    color: blue;
+}
+
+nav li{
+    margin: .5em;
+}
+
+li:nth-child(6){
+    margin-left: auto;
+}
+
+.logo-item{
+    font-size: 3em;
+    font-family: "Montserrat";
+    position: absolute;
+    height: inherit;
+    width: 100%;
+    display: flex;
+    margin: 0;
+}
+
+.logo{
+    margin: auto;
+    padding-top: .2em;
+    padding-bottom: .2em;
+}
+
+li:not(.logo-item) {
+    z-index: 1;
 }
