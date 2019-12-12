@@ -104,20 +104,32 @@
         // 4. crocodile > after a while
         // 5. something else >
         //
+        //
+        // function seeYouLater(inputString) {
+        //     if(inputString === "alligator") {
+        //         return "See you later alligator";
+        //     } else if (inputString ==="crocodile"); {
+        //         return("After a while crocodile!") {
+        //
+        //         }else {
+        //             return "So long";
+        //         }
+        //
+        //     }
+        //
+        // }
 
-        function seeYouLater(inputString) {
-            if(inputString === "alligator") {
-                return "See you later alligator";
-            } else if (inputString ==="crocodile"); {
-                return("After a while crocodile!") {
 
-                }else {
-                    return "So long";
-                }
+    //write a js function that receives another function as a parameter and executes it then call the function and pass in an anonymous function as an argument
 
-            }
+function  functionA(callbackFuntion){
+    callbackFunction("It works!");
+}
+functionA(function (message)) {
+        alert (message);
+    });
 
-        }
+
 
 
 
