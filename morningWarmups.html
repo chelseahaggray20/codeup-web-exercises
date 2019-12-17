@@ -121,18 +121,47 @@
 
 
     //write a js function that receives another function as a parameter and executes it then call the function and pass in an anonymous function as an argument
+//
+// function  functionA(callbackFuntion){
+//     callbackFunction("It works!");
+// }
+// functionA(function (message)) {
+//         alert (message);
+//     });
+//
 
-function  functionA(callbackFuntion){
-    callbackFunction("It works!");
-}
-functionA(function (message)) {
-        alert (message);
-    });
+//function for calling an Array of objects
+
+function getGoldReindeer(reindeerArray){
+    var bucket = [];
+
+    for (var i = 0; i < reindeerArray.length; i++){
+        if(reindeerArray[i].isGold === true){
+            bucket.push(reindeerArray[i]);
+        })
+    })
+
+    return bucket;
+
+console.log(getGoldReindeer(reindeerList));;
+
+        }
 
 
 
+    //for each example
 
-
+        // function getGoldReindeer(reindeerArray){
+        //     var bucket = [];
+        //
+        //     reindeerArray.forEach(function(reindeer)){
+        //         if(reindeer.isGold === true) {
+        //             bucket.push(reindeer);
+        //         }
+        //     }
+        // }
+        //
+        // console.log(getGoldReindeer(reindeerList));;
 
 
 

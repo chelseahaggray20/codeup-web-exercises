@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+// TODO Answer 1
+​
+/*function sum (numbers) {
+let sum = 0;
+for (let i = 0; i < numbers.length; i++) {
+sum+= numbers[i];
+}
+return sum;
+}*/
+​
+/*function sum(numbers) {
+let i = 0;
+let sum = 0;
+while (i < numbers.length) {
+sum+= numbers[i];
+i++;
+}
+return sum;
+}*/
+​
+// TODO Answer 2
+​
+/*function noSpace(x){
+let xArray = x.split("");
+let returnArray = [];
+console.log(xArray);
+for (let i = 0; i < xArray.length; i++) {
+// check to see if each index is equal to empty space, if it isn't then we can push to the return array.
+if (xArray[i] !== " ") {
+returnArray.push(xArray[i]);
+}
+}
+return returnArray.join("");
+}*/
+​
+​
+/*function noSpace(x) {
+return x.split(" ").join("");
+}*/
+​
+​
+/*function noSpace(x){
+return x.replace(/ /g, '');
+}*/
+​
+// TODO Answer 3
+​
+/*function switcher(x){
+let alphabet = " ?!abcdefghijklmnopqrstuvwxyz ";
+let reverseAlphabetArray = alphabet.split("").reverse();
+let returnString = "";
+​
+// Loop through array. Each argument passed in will be used as 'positionInput' for the reverseAlphabetArray
+x.forEach(function(positionInput) {
+returnString += reverseAlphabetArray[positionInput];
+});
+return returnString;
+}*/
+​
+// TODO Answer 4
+​
+/*function changeEnough(change, amountDue) {
+let totalChange;
+totalChange = (change[0] * .25) + (change[1] * .10) + (change[2] * .05) + (change[3] * .01);
+return (totalChange >= amountDue);
+}*/
+​
+// TODO Answer 5
+​
+/*function volumeOfBox(sizes) {
+return sizes.width * sizes.height * sizes.length;
+}*/
+​
+// TODO Answer 6
+​
+/*function keysAndValues(obj) {
+let keys = Object.keys(obj);
+let values = Object.values(obj);
+​
+return [keys, values];
+}*/
+​
+// TODO Answer 7
+​
+/*let oldest = function(people) {
+let oldestAge = 0;
+let oldestAgeName = "";
+let nameArray = Object.keys(people);
+let ageArray = Object.values(people);
+​
+for (let i = 0; i < ageArray.length; i++) {
+if (ageArray[i] > oldestAge) {
+oldestAge = ageArray[i];
+oldestAgeName = nameArray[i];
+}
+}
+return oldestAgeName;
+};*/
+​
+// TODO Answer 8
+/*function longestStreak(arr) {
+let milliSecsInDay = 86400000;
+let difference;
+let currentDate;
+let previousDate;
+let consecutiveDays = 1;
+let maxConsecutiveDays = 1;
+​
+// Returns 0, if an empty array is passed
+if (arr.toString() === "") {
+return 0;
+}
+​
+for (let i = 1; i < arr.length; i++) {
+//Converts the strings into actual date objects. The return is in milliseconds.
+currentDate = Date.parse(arr[i].date);
+previousDate = Date.parse(arr[i - 1].date);
+difference = (currentDate - previousDate) / milliSecsInDay;
+​
+if (difference !== 1) {
+// If the difference isn't 1, the consecutive days have ended. Reset consecutiveDays back to 1.
+consecutiveDays = 1;
+} else if (difference === 1) {
+// If it is 1, then we can increment and track the max consecutiveDays.
+consecutiveDays++;
+if (consecutiveDays > maxConsecutiveDays) {
+maxConsecutiveDays = consecutiveDays;
+}
+}
+}
+return maxConsecutiveDays;
+}*/
+
+
+
+
+
+//Create a function that takes two numbers as arguments (num, length)
+// and returns an array of multiples of num up to length.
+//First create function and function parameters
+//Second create a variable for the multiples that accepts an array
+//third create a for loop so that the code can be run through the array
+//create the argument you want the for loop to execute
+//set the var of i for index at zero
+//This means that the index is used as an offset.
+// **The first element of the array is exactly contained in the memory location that array refers (0 elements away),
+// so it should be denoted as array[0]. Most programming languages have been designed this way, so indexing from 0 is pretty much inherent to the language
+//the next piece of the argument states that as long as i is less than the length of numbers in an array add 2
+// function multiplesOf(numbers, number) { // add second argument
+//     var multiples = []; // change to array (so that we can store multiple numbers - not just one multiple)
+//     for (var i = 0; i < numbers.length; i++) {
+//         if (numbers[i] % number === 0) { // divide by the number
+//             multiples.push(numbers[i]); // add the current multiple found to the multiples array
+//         }
+//     }
+//
+//     return multiples;
+// }
+//
+// console.log(multiplesOf([4, 5, 6, 7, 8], 2)); // Output: [4, 6, 8
+//Given a total due and an array representing the amount of change in your pocket,
+// determine whether or not you are able to pay for the item.
+// Change will always be represented in the following order: quarters, dimes, nickels, pennies.
+//To illustrate: changeEnough([25, 20, 5, 0], 4.25) should yield true,
+//since having 25 quarters, 20 dimes, 5 nickels and 0 pennies gives you 6.25 + 2 + .25 + 0 = 8.50
+//create a function called changeEnough
+//Takes in two arguments amount of change and amount due
+//create variables to identify the amount of change
+//create a variable that contains change variable
+//create if condition argues change versus amount due
+//create else if argument that states false if you don't have enough change
+function changeEnough(change, amountDue) {
+var quart = change[0]*0.25;
+var dimes = change[1]*0.10;
+var nickel = change[2]*0.05;
+var pennies = change[3]*0.01;
+var result = quart+dimes+nickel+pennies;
+if(result >= amountDue){
+return true;
+}
+else if(result < amountDue){
+return false;
+}
+}
+console.log(changeEnough([2, 100, 0, 0], 14.11));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
