@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Geocode Examples</title>
+    <title>Geocode Exercise</title>
     <!-- Mapbox CSS -->
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <!-- Custom CSS -->
@@ -16,33 +16,102 @@
 </head>
 <body>
 
-<h1>My First Mapbox Map!</h1>
-
+<h1>My Favorite Restaurants!</h1>
+<button id="btn-1">Zoom 5</button>
+<button id="btn-2">Zoom 15</button>
+<button id="btn-3">Zoom 20</button>
 <!-- The HTML element that serves as the Mapbox container -->
 <div id='map'></div>
 
 <!-- Mapbox JS -->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="JS/keys.js"></script>
+<script src="JS/mapbox-geocoder-utils.js"></script>
 
 
-<!-- Custom JS -->
+
 <script>
-    mapboxgl.accessToken = mapboxToken;
-    var mapOptions = {
+
+
+
+        mapboxgl.accessToken = mapboxToken;
+
+        var mapOptions = {
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 14,
-        center: [-98.4861, 29.4252]
+        zoom: 5,
+        center: [-98.4916, 29.4252]
     }
 
-    // the  geocode method from mapbox-geocoder-utils.js
-    geocode("600 Navarro St #350, San Antonio, TX 78205", YOUR_TOKEN_HERE).then(function(result) {
-        console.log(result);
-        map.setCenter(result);
-        map.setZoom(20);
-    });
+        var map = new mapboxgl.Map(mapOptions);
 
+
+
+
+var brasaoPopup = new mapboxgl.Popup()
+        .setHTML("<p>Brasao Brazilian Steakhouse</p>")
+            var marker = new mapboxgl.Marker(){
+            .setLngLat([-98.4916, 29.4252])
+                    .setPopup(brasaoPopup);
+                    .addTo(map);
+            }
+
+        }
+
+var faveRest1 = {
+    address: 19210 W,I-10,San Antonio,TX 78257,
+    popupHTML:Brasao Brazilian Steakhouse,
+};
+
+
+geocode(faveRest1.address,mapboxToken)
+
+
+
+
+
+
+var restArray = {
+
+}
+
+
+
+
+
+
+
+        // // <select id="zoom-level">
+        // //     <option value="5">5</option>
+        // //     <option value="10">10</option>
+        // //     <option value="15" selected>15</option>
+        // //     <option value="20">20</option>
+        // // </select>
+        //
+        // //
+        // // // selecting the zoom dropdown input
+        // // var select = document.querySelector('#zoom-level');
+        //
+        //
+        //
+        // // a function to add an event listener to the map
+        // function addSelectEventListener(map) {
+        //     select.addEventListener('change', function() {
+        //         map.setZoom(select.value);
+        //     });
+        // }
+        //
+
+
+        // var button1 = document.getElementById("Zoom 5");
+        // // button1.addEventListener("click", function () {
+        // // }
+        // //     var button2 = document.getElementById("Zoom 15");
+        // //     button2.addEventListener("click", function () {
+        // //     }
+        // //
+        // // var button3 = document.getElementById("Zoom 20");
+        // // button3.addEventListener("click", function () {
 </script>
 </body>
 </html>
