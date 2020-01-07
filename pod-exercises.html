@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function removeDups(arr) {
+        var names = ['Chelsea', 'Adra', 'Alex', 'Kim', 'Megan', 'Alex', 'Monique', 'Caysen', 'Brycen', 'Kim'];
+        let unique = {};
+        names.forEach(function(i) {
+            if(!unique[i]) {
+                unique[i] = true;
+            }
+        });
+        return Object.keys(unique);
+    }
+console.log(removeDups((['Chelsea', 'Adra', 'Alex', 'Kim', 'Megan', 'Alex', 'Monique',])));
+    // console.log(jackpot([2, 2, 2, 2]));
+
+
+
+</script>
+</body>
+</html>

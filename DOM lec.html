@@ -25,7 +25,17 @@
 </ul>
 <button id="button">Click Me!</button>
 <a id="codeup" href="http://codeup.com">codeup</a>
+
+<h2 id ="important">Goals for 2020</h2>
+<ul>
+    <li class="not-important">Worry less</li>
+    <li>Laugh More</li>
+    <li>Be in the present</li>
+</ul>
+
 <script>
+
+
     console.log(document)
     var header = document.getElementById("header");
     console.log(header);
@@ -68,6 +78,10 @@
     setTimeout(function() {
         button.removeEventListener("click", buttonClick);
     }, 5000);
+
+
+    $('important').css('background-color', 'blue');
+
 </script>
 </body>
 </html>

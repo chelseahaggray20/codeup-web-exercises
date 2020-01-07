@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Exercises</title>
+    <style>
+        body {
+            background-color: black;
+
+        }
+
+        h1 {
+            color: darkgoldenrod;
+        }
+
+        h3 {
+            color: silver ;
+        }
+
+        p {
+            color: #371F93;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<h1 id="happy">Happy New Year!</h1>
+
+<h3>Goals for the New Year</h3>
+
+<ul id="goals">
+    <li class="goal-1">Worry Less</li>
+    <li class="goal-2">Laugh More</li>
+    <li class="goal-3">Be in the Present</li>
+    <li class="goal-4">Don't Procrastinate</li>
+</ul>
+
+<p>2020 is My Year!</p>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script>
+    (function () {
+        "use strict";
+        $(document).ready(function () {
+
+
+            $('h1').click(function(){
+                $(this).css('background-color', '#0fb784');
+            });
+
+
+            $('p').dblclick(function(){
+                $(this).css('font-size', '40px');
+            });
+
+
+            $('.goal-1').css("color", "gold");
+            $('.goal-2').css("color", "silver");
+            $('.goal-3').css("color", "gold");
+            $('.goal-4').css("color", "silver");
+
+            $('li').hover(
+                function() {
+                    $(this).css('color', 'red');
+                }
+            );
+
+            $("#button").click(function() {
+                alert("You clicked the button.")
+            });
+
+
+        })
+    })();
+</script>
+</body>
+</html>
