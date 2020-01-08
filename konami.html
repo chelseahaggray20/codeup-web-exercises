@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+<style>
+    body {
+        background-image:
+        position: center;
+    }
+
+    textarea {
+
+
+    }
+
+    h1 {
+
+        color: blueviolet;
+    }
+
+
+
+</style>
+
+<body>
+<h1>Konami Code</h1>
+
+<textarea name="konami" id="code" cols="30" rows="10"></textarea>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    "use strict";
+
+    $(document).keyup(function(event){
+        console.log(event.keyCode);
+    });
+
+
+
+ var code = [38,38,40,40,37,39,37,39,66,65];
+
+    $('#konami').on("keypress", function() {
+        $('#code').append("<span>Key was pressed</span>");
+        $('span').on('click', function () {
+            $(this).css('background', '#ef0');
+        })
+    });
+
+
+
+
+
+
+    // $(function(){
+    //     $(document).konamiCode({
+    //     {
+    //         code:[38,38,40,40,37,39,37,39,66,65],
+    //     });
+
+
+    //
+    // $(function(){
+    //     $(window).jKonamicode({
+    //     {
+    //         code:[38,38,40,40,37,39,37,39,66,65],
+    //             onRightKey:function(e){
+    //         alert("You entered "+e+" right keys.");
+    //     }
+    //     },
+    //     function(){
+    //         alert("Hello World!");
+    //     }
+    // );
+    // })
+</script>
+</body>
+</html>

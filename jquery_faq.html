@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery FAQ</title>
+    <style>
+        .invisible {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<dl>
+    <dt>Enchanted Rock</dt>
+    <dd class="invisible">Huge scenic BOULDER.Amazing views.</dd>
+
+    <dt>Choke Canyon</dt>
+    <dd class="invisible">.Aligators</dd>
+
+    <dt>Big Bend</dt>
+    <dd class="invisible">Mountain Lions and Bears...Oh my</dd>
+
+    <dt>Canyon Lake</dt>
+    <dd class="invisible">Been there, done that.</dd>
+
+    <dt>Dinosaur State Park</dt>
+    <dd class="invisible">Need to go here!</dd>
+
+    <dt>Government Canyon State Park</dt>
+    <dd class="invisible">Need to go back since its cooler outside.</dd>
+
+    <dt>Guadalupe Mountains National Park</dt>
+    <dd class="invisible">Someday.</dd>
+
+    <dt>Palo Duro Canyon State Park</dt>
+    <dd class="invisible">On the list.</dd>
+
+
+<button id="styler">Click to make changes</button>
+
+<script
+        src="https://code.jquery.com/jquery-3.4.1.slim.js"
+        integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+        crossorigin="anonymous">
+</script>
+
+<script>
+    $('#styler').click(function(e) {
+        e.preventDefault();
+        $("dd").toggleClass("invisible");
+    });
+    $("dt").click(function() {
+        $(this).css("background-color", "yellow");
+    })
+</script>
+
+</body>
+</html>
