@@ -7,9 +7,20 @@
         .invisible {
             visibility: hidden;
         }
+
+
     </style>
 </head>
 <body>
+
+<div id="newsletter">
+    <h1>"Would you like to sign up for our newsletter?"</h1>
+
+    <span id="hide"> X </span>
+
+</div>
+
+<h2>Please Join Our Site</h2>
 
 <dl>
     <dt>Enchanted Rock</dt>
@@ -36,23 +47,88 @@
     <dt>Palo Duro Canyon State Park</dt>
     <dd class="invisible">On the list.</dd>
 
+    <button id="change">Click to make changes</button>
 
-<button id="styler">Click to make changes</button>
+</dl>
+
+    <h3>Big Bend National Park</h3>
+    <ul>
+        <li>The highest elevation found in Big Bend is 7,832 feet on Emory Peak</li>
+        <li>It is home to Black Bears.</li>
+        <li>There's mountain lions there too!</li>
+        <li>The Chisos Mountains are beautiful.</li>
+
+    </ul>
+
+    <h3>Enchanted Rock</h3>
+    <ul>
+        <li>Lot's of wildlife</li>
+        <li>Amazing Views</li>
+        <li>Secret caves for exploring</li>
+        <li>Short drive from Fredericksburg.</li>
+
+    </ul>
+
+    <h3>Choke Canyon</h3>
+    <ul>
+        <li>They have aligators!</li>
+        <li>Water runs from the Frio River</li>
+        <li>Great place for fishing</li>
+        <li>Short Drive from San Antonio</li>
+
+    </ul>
+
+<button id="highlight">Click to make changes</button>
+
 
 <script
-        src="https://code.jquery.com/jquery-3.4.1.slim.js"
-        integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
-        crossorigin="anonymous">
+    src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossOrigin="anonymous">
 </script>
 
 <script>
-    $('#styler').click(function(e) {
-        e.preventDefault();
-        $("dd").toggleClass("invisible");
+    $(document).ready(function() {
+
+        $("#change").click(function() {
+            e.preventDefault();
+             $("dd").toggleClass("invisible");
+
     });
-    $("dt").click(function() {
+
+    $("dt").click(function(){
         $(this).css("background-color", "yellow");
-    })
+
+    });
+
+    $("#highlight").click(function() {
+        $("ul").each(function(){
+            $(this).children().last().css("background", "yellow");
+        });
+
+        $('h3').click(function(){
+            $(this).next().children().css("font-weight", "bold");
+            $(this).next().slideToggle();
+        });
+
+        $('li').click(function(){
+            $(this).parent().children().first().css("color", "blue");
+        });
+
+
+        $("#hide").click(function() {
+                $(this).parent().hide();
+
+            });
+
+
+    $("ul").hide();
+
+
+        $('h2').hide();
+    });
+
+    });
+
 </script>
 
 </body>
