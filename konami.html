@@ -31,25 +31,37 @@
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script>
-    "use strict";
+    (function() {
 
-    $(document).keyup(function(event){
-        console.log(event.keyCode);
-    });
+        "use strict";
 
+        var konami = {
+            sequence: [
+                'ArrowUp',
+                'ArrowUp',
+                'ArrowDown',
+                'ArrowDown',
+                'ArrowLeft',
+                'ArrowRight',
+                'ArrowLeft',
+                'ArrowRight',
+                'b',
+                'a',
+                'Enter'
+            ],
+            index: 0
+        };
 
+        $(document).keydown(function(e) {
+            konami.sequence[konami.index] === e.key ? konami.index += 1 : konami.index = 0;
+            if (konami.index === konami.sequence.length) {
+                alert("YOU HAVE 30 LIVES!");
+                konami.index = 0;
+            }
+        });
 
- var code = [38,38,40,40,37,39,37,39,66,65];
-
-    $('#konami').on("keypress", function() {
-        $('#code').append("<span>Key was pressed</span>");
-        $('span').on('click', function () {
-            $(this).css('background', '#ef0');
-        })
-    });
-
-
-
+    })();
+</script>
 
 
 

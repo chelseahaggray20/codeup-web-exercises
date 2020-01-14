@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Sky Call</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="JS/keys.js"></script>
+<script>
+    $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.7604,-95.3698").done(function(data) {
+        console.log(data);
+        // var dateObject = new Date(data.currently.time * 1000);
+        // console.log(dateObject.toString());
+    });
+
+
+
+
+
+
+
+<!--    <script>-->
+<!--        "use strict";-->
+
+<!--        var corsUrl = 'https://cors-anywhere.herokuapp.com/';-->
+<!--        var darkSkyUrl = 'https://api.darksky.net/forecast/';-->
+<!--        var darkSkyApiKey = darkSkyAPI;-->
+
+<!--        var lat = 29.4241;-->
+<!--        var lng = -98.4936;-->
+
+
+//           change below else if or switch statement
+     var icons = {-->
+<!--        "clear-day": "icon/Sun.svg",-->
+<!--        "clear-night": "icon/Moon-Full.svg",-->
+<!--        "rain": "icon/Cloud-Rain.svg",-->
+<!--        "snow": "icon/Snowflake.svg",-->
+<!--        "sleet": "icon/Snowflake.svg",-->
+<!--        "wind": "icon/Wind.svg",-->
+<!--        "fog": "icon/Cloud-Fog.svg",-->
+<!--        "cloudy": "icon/Cloud.svg",-->
+<!--        "partly-cloudy-day": "icon/Cloud-Sun.svg",-->
+<!--        "partly-cloudy-night": "icon/Cloud-Moon.svg"-->
+<!--    };-->
+
+<!--        $.get(corsUrl + darkSkyUrl + darkSkyApiKey + "/" + lat + "," + lng).done(function(data) {-->
+<!--        $('body').html('<img src="' + icons[data.daily.data[0].icon] + '">');-->
+<!--    });-->
+
+
+<!--</script>-->
+<!---->
+
+
+
+
+</script>
+</body>
+</html>

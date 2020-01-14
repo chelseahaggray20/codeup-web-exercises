@@ -2,136 +2,332 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Codeup Design</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Anton" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href=".css/codeup-design-bootstrap.css">
 
-    <title>Hello, world!</title>
-
-    <style>
-        body{
-            background-color: #F0F0F0;
-            margin-top: 50px;
-        }
-        #xs-header{
-            background-color: white;
-            width: 100%;
-            height: 50px;
-        }
-        #xs-logo{
-            height: 105px;
-            width: 105px;
-            bottom: 30px;
-            position: relative;
-        }
-        #custom h3{
-            font-size: 32px;
-        }
-        .design-circles{
-            height: 105px;
-            width: 105px;
-            border-radius: 50%;
-            border: 5px solid white;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            flex-direction: column;
-        }
-        #design-red{
-            background-color: #E6563B;
-        }
-        #develop-yellow{
-            background-color: #EB9D3A;
-        }
-        #support-green{
-            background-color: #7CB06C;
-        }
-        #design-blue{
-            background-color: #00ABA9;
-        }
-    </style>
 </head>
-<body id="custom">
-<div id="xs-header" class="xs-only">
-    <img id="xs-logo" src="img/logo.jpg" alt="" class="rounded-circle mx-auto d-block">
-</div>
+<body>
 
-<div class="container mt-5">
+<!-- ************************************************ NAV BAR HTML ************************************************ -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
 
-    <div class="row text-center">
-        <div class="col-12">
-            <h2>codeup design</h2>
+        <!-- Large Desktop Version -->
+        <div class="nav-header hidden-xs hidden-sm">
+            <a class="navbar-brand" href="#">
+                <img class="logo" src="img/logo new.png" alt="logo">
+                <span class="logo-text">codeup design</span>
+            </a>
         </div>
-    </div>
+        <ul class="nav nav-right hidden-xs hidden-sm">
+            <li class="right-logo"><a class="nav-text" href=""><span class="nav-text">Contact</span></a></li>
+            <li class="right-logo"><a class="nav-text" href=""><span class="nav-text">Blog</span></a></li>
+            <li class="left-logo"><a class="nav-text" href=""><span class="nav-text">Work</span></a></li>
+            <li class="left-logo"><a class="nav-text" href=""><span class="nav-text">Services</span></a></li>
+        </ul>
 
-    <div class="row ">
-        <div class="col-10 offset-1">
-            <div class="row text-center no-gutters">
-                <div class="col-3">SERVICES</div>
-                <div class="col-3">WORK</div>
-                <div class="col-3">BLOG</div>
-                <div class="col-3">CONTACT</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mt-5 text-center">
-        <div class="col-12">
-            <h1>VISUAL DESIGN & WEB DEVELOPMENT</h1>
-        </div>
-
-        <div class="col-10 offset-1 mt-5">
-            <h4>FROM PARK CITY, UT</h4>
-        </div>
-    </div>
-
-    <!--		https://stackoverflow.com/questions/2939914/how-do-i-vertically-align-text-in-a-div-->
-    <div class="row text-center mt-5">
-        <div class="col-8 offset-2">
+        <!-- Medium Version -->
+        <ul class="nav hidden-xs visible-sm-12 hidden-md hidden-lg">
             <div class="row">
-                <div class="col-6">
-                    <div class="design-circles text-center mx-auto" id="design-red">DESIGN</div>
+                <div class="col-xs-2 col-xs-offset-1">
+                    <li class="text-center">
+                        <a href="text-center"><span class="nav-text">Work</span></a>
+                    </li>
+                </div>
+                <div class="col-xs-2">
+                    <li class="text-center">
+                        <a href="text-center"><span class="nav-text">Services</span></a>
+                    </li>
+                </div>
+                <div class="col-xs-2">
+                    <li class="logo-li">
+                        <a class="" href="#">
+                            <img class="logo" src="img/logo new.png" alt="logo">
+                        </a>
+                    </li>
+                </div>
+                <div class="col-xs-2">
+                    <li class="text-center">
+                        <a href="text-center"><span class="nav-text">Blog</span></a>
+                    </li>
+                </div>
+                <div class="col-xs-2">
+                    <li class="text-center">
+                        <a href="text-center"><span class="nav-text">Contact</span></a>
+                    </li>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="text-center">
+                        <a class="logo-text" href="#">codeup design</a>
+                    </div>
+                </div>
+            </div>
+        </ul>
+
+        <!-- Mobile Version -->
+        <ul class="nav mobile-nav visible-xs-12 hidden-sm hidden-md hidden-lg">
+            <div class="row">
+                <div class="col-xs-4 col-xs-offset-4 text-center">
+                    <li class="logo-li">
+                        <a class="" href="#">
+                            <img class="logo" src="img/logo new.png" alt="logo">
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="text-center">
+                        <a class="logo-text" href="#">codeup design</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-xs-2 col-xs-offset-2">
+                    <li class="text-center">
+                        <a href="text-center"><span class="nav-text">Blog</span></a>
+                    </li>
+                </div>
+                <div class="col-xs-2">
+                    <li class="text-center">
+                        <a href="text-center"><span class="nav-text">Contact</span></a>
+                    </li>
+                </div>
+                <div class="col-xs-2">
+                    <li class="text-center">
+                        <a href="text-center"><span class="nav-text">Work</span></a>
+                    </li>
+                </div>
+                <div class="col-xs-2">
+                    <li class="text-center">
+                        <a href="text-center"><span class="nav-text">Services</span></a>
+                    </li>
+                </div>
+            </div>
+        </ul><!-- End of mobile nav version -->
+
+    </div>
+</nav>
+
+<!-- ************************************************ MAIN CONTENT HTML ************************************************ -->
+<main class="container blue">
+
+    <!-- Heading -->
+    <div class="row">
+
+        <h2 class="text-center main-title">Visual Design & Web Development</h2>
+        <h4 class="text-center">From Park City Utah</h4>
+
+    </div>
+
+    <!-- Large circle icons -->
+    <div class="row circle-row-padding">
+        <div class="col-xs-6 col-sm-2 col-md-2 col-sm-offset-2">
+            <div class="circle red-circle center-block">
+                <h5>Design</h5>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-2 col-md-2">
+            <div class="circle yellow-circle center-block">
+                <h5>Develop</h5>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-2 col-md-2">
+            <div class="circle green-circle center-block">
+                <h5>Support</h5>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-2 col-md-2">
+            <div class="circle blue-circle center-block">
+                <h5>Host</h5>
+            </div>
+        </div>
+    </div>
+
+    <hr class="hidden-xs">
+
+    <!-- Features and Side Bar HTML -->
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+
+            <!-- Row for title of main products section -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="body-text title-margin">selected work</p>
+                </div>
+            </div>
+
+            <!-- Row for images and tiny icons of main products -->
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <div class="img-panel-box">
+                        <div class="project-img project-img-1"></div>
+                        <div class="img-control-panel">
+                            <span class="body-text">
+                                featured project
+                            </span>
+                            <span>
+                                <div class="icon-circle blue-circle">
+                                    <span class="icon-text">H</span>
+                                </div>
+                                <div class="icon-circle green-circle">
+                                    <span class="icon-text">S</span>
+                                </div>
+                                <div class="icon-circle yellow-circle">
+                                    <span class="icon-text">D</span>
+                                </div>
+                                <div class="icon-circle red-circle">
+                                    <span class="icon-text">D</span>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-6">
-                    <div class="design-circles text-center mx-auto" id="develop-yellow">DEVELOP</div>
+                <div class="col-sm-6">
+                    <div class="img-panel-box">
+                        <div class="project-img project-img-2"></div>
+                        <div class="img-control-panel">
+                            <span class="body-text">
+                                featured project
+                            </span>
+                            <span>
+                                <div class="icon-circle blue-circle">
+                                    <span class="icon-text">H</span>
+                                </div>
+                                <div class="icon-circle green-circle">
+                                    <span class="icon-text">S</span>
+                                </div>
+                                <div class="icon-circle yellow-circle">
+                                    <span class="icon-text">D</span>
+                                </div>
+                                <div class="icon-circle red-circle">
+                                    <span class="icon-text">D</span>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-6">
-                    <div class="design-circles text-center mx-auto" id="support-green">SUPPORT</div>
+                <div class="col-sm-6">
+                    <div class="img-panel-box">
+                        <div class="project-img project-img-3"></div>
+                        <div class="img-control-panel">
+                            <span class="body-text">
+                                featured project
+                            </span>
+                            <span>
+                                <div class="icon-circle blue-circle">
+                                    <span class="icon-text">H</span>
+                                </div>
+                                <div class="icon-circle green-circle">
+                                    <span class="icon-text">S</span>
+                                </div>
+                                <div class="icon-circle yellow-circle">
+                                    <span class="icon-text">D</span>
+                                </div>
+                                <div class="icon-circle red-circle">
+                                    <span class="icon-text">D</span>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-6">
-                    <div class="design-circles text-center mx-auto" id="design-blue">HOST</div>
+                <div class="col-sm-6">
+                    <div class="img-panel-box">
+                        <div class="project-img project-img-4"></div>
+                        <div class="img-control-panel">
+                            <span class="body-text">
+                                featured project
+                            </span>
+                            <span>
+                                <div class="icon-circle blue-circle">
+                                    <span class="icon-text">H</span>
+                                </div>
+                                <div class="icon-circle green-circle">
+                                    <span class="icon-text">S</span>
+                                </div>
+                                <div class="icon-circle yellow-circle">
+                                    <span class="icon-text">D</span>
+                                </div>
+                                <div class="icon-circle red-circle">
+                                    <span class="icon-text">D</span>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Side bar of recent posts -->
+        <div class="col-xs-12 col-md-4">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="body-text title-margin">The last</p>
+                </div>
+            </div>
+            <div class="row side-row-style">
+                <div class="col-xs-2">
+                    <div class="side-image side-image-1"></div>
+                </div>
+                <div class="col-xs-10">
+                    <h5 class="side-bar-text">the admin bar and absolute positioning</h5>
+                </div>
+            </div>
+            <div class="row side-row-style">
+                <div class="col-xs-2">
+                    <div class="side-image side-image-2"></div>
+                </div>
+                <div class="col-xs-10">
+                    <h5 class="side-bar-text">nibbler awesome website testing</h5>
+                </div>
+            </div>
+            <div class="row side-row-style">
+                <div class="col-xs-2">
+                    <div class="side-image side-image-3"></div>
+                </div>
+                <div class="col-xs-10">
+                    <h5 class="side-bar-text">how to get google to like you</h5>
+                </div>
+            </div>
+
+            <!-- Tweet section -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="body-text bolded-text"><i class="fa fa-twitter" style="font-size:28px;"></i>last tweet</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut, commodi doloremque est expedita magnam nam numquam officia perferendis quibusdam, quidem quod rem sit ut velit vitae voluptate. Eos, qui.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <div class="row mt-5">
-        <div class="col-12 text-center">
-            SELECTED WORK
-        </div>
-
-        <div class="col-12">
-            <img class="img-fluid border" src="img/codeup-design/apple-ipad.jpg" alt="">
-        </div>
-
-        <div class="col-6">FEATURED PROJECT</div>
-        <div class="col-6"></div>
-
-    </div>
-</div>
+</main>
 
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- jQuery Version 2.2.4 -->
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </body>
 </html>

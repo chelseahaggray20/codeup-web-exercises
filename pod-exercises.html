@@ -7,19 +7,67 @@
 <body>
 <script>
 
-    function removeDups(arr) {
-        var names = ['Chelsea', 'Adra', 'Alex', 'Kim', 'Megan', 'Alex', 'Monique', 'Caysen', 'Brycen', 'Kim'];
-        let unique = {};
-        names.forEach(function(i) {
-            if(!unique[i]) {
-                unique[i] = true;
-            }
-        });
-        return Object.keys(unique);
-    }
-console.log(removeDups((['Chelsea', 'Adra', 'Alex', 'Kim', 'Megan', 'Alex', 'Monique',])));
-    // console.log(jackpot([2, 2, 2, 2]));
+    // function removeDups(arr) {
+    //     var names = ['Chelsea', 'Adra', 'Alex', 'Kim', 'Megan', 'Alex', 'Monique', 'Caysen', 'Brycen', 'Kim'];
+    //     let unique = {};
+    //     names.forEach(function(i) {
+    //         if(!unique[i]) {
+    //             unique[i] = true;
+    //         }
+    //     });
+    //     return Object.keys(unique);
+    // }
+    // // console.log(removeDups((['Chelsea', 'Adra', 'Alex', 'Kim', 'Megan', 'Alex', 'Monique',])));
+    // // console.log(removeDups((['Chelsea', 'Chelsea', 'Brycen', 'Chelsea', 'Caysen', 'Chelsea', 'Brycen',])));
+    // console.log(removeDups((['Susan', 'Stacy', 'Sally', 'Sally', 'Sally', 'Susan', 'Stacy',])));
+    // // console.log(jackpot([2, 2, 2, 2]));
 
+    //
+    // function removeDups(arr) {
+    //     var unique = {};
+    //     arr.forEach(function(i) {
+    //         if(!unique[i]) {
+    //             unique[i] = true;
+    //         }
+    //     });
+    //     return Object.keys(unique);
+    // }
+    //
+    // // console.log(removeDups((['Chelsea', 'Adra', 'Alex', 'Kim', 'Megan', 'Alex', 'Monique', 'Caysen', 'Brycen', 'Kim'])));
+    // console.log(removeDups((['Sally', 'Sally', 'Stacy', 'Susan', 'Sally', 'Sarah', 'Stacy', 'Sally', 'Susan', 'Stacy'])));
+
+    // function matchLastItem(arr) {
+    //     var lastItem = arr[arr.length - 1];
+    //     var allOthers = "";
+    //     for (var i = 0; i < arr.length - 1; i++)  {
+    //         allOthers += arr[i];
+    //     }
+    //     if (allOthers === lastItem) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    //
+    // };
+    //
+    // console.log(matchLastItem((['cow', 'pig', 'cow', 'cowpigcow'])));
+    // console.log(matchLastItem(([0, 1, 2, 3, 4, 5, '12345'])));
+    // console.log(matchLastItem((['taco', 'pizza', 'macaroni', 'tacoPizzaMacaroni'])));
+    //
+
+
+
+
+    function formatPhoneNumber(numbers) {
+        var format = "(xxx) xxx-xxxx";
+        for(var i = 0; i < numbers.length; i++) {
+            format = format.replace('x', numbers[i]);
+        }
+        return format
+    }
+
+    console.log(formatPhoneNumber(([5, 1, 9, 5, 5, 5, 4, 4, 6, 8])));
+    console.log(formatPhoneNumber(([2, 1, 0, 9, 1, 2, 7, 0, 7, 9])));
 
 
 </script>
