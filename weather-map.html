@@ -94,17 +94,16 @@
     </div>
 </div>
 
-<form>
-    Latitude:<br>
+<!--<form>-->
+<!--    Latitude:<br>-->
 
-    <input type="text" name="latitude" placeholder="Enter Latitude Here" id="lat"><br>
-    <br>
+<!--    <input type="text" name="latitude" placeholder="Enter Latitude Here" id="lat"><br>-->
+<!--    Longitude:<br>-->
 
-    <input type="text" name="longitude" placeholder="Enter Longitude Here" id="long"><br>
+<!--    <input type="text" name="longitude" placeholder="Enter Longitude Here" id="long"><br>-->
 
-    <input type="submit" value="Submit" id="go-getter">
-
-</form>
+<!--    <input type="submit" value="Submit" id="go-getter">-->
+<!--</form>-->
 
 
 <div id = 'map'></div>
@@ -120,6 +119,9 @@
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="JS/keys.js"></script>
 <script src="JS/mapbox-geocoder-utils.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>-->
+
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -144,6 +146,7 @@
 
     $(document).ready(function() {
         getWeather(29.7604, -95.3698);
+
         function getWeather(latitude, longitude) {
             var weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + latitude + ',' + longitude);
             weather.done(function (weather) {
@@ -154,73 +157,98 @@
 
 
                 $('.Today-weather').empty().append(
-                    '<div class="d-flex-col justify-content-center">' +
-                    '<h5 class="d-flex justify-content-center">' + "Current Weather " + '</h5>' +
+                    '<div>' +
+                    '<h5>' + "Current Weather " + '</h5>' +
                     '<img src="' + weatherType[weather.daily.data[0].icon] + '" class="mt-2" style="width: 30%">' +
-                    '<p class="d-flex justify-content-center mt-2">' + weather.currently.temperature + '° F' + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "The Sky is " + weather.currently.summary + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "Humidity: " + weather.currently.humidity + "%" + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "Wind: " + weather.currently.windSpeed + " MPH" + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "Pressure: " + weather.currently.pressure + '</p>' +
+                    '<p>' + weather.currently.temperature + '° F' + '</p>' +
+                    '<p>' + "The Sky is " + weather.currently.summary + '</p>' +
+                    '<p>' + "Humidity: " + weather.currently.humidity + "%" + '</p>' +
+                    '<p>' + "Wind: " + weather.currently.windSpeed + " MPH" + '</p>' +
+                    '<p>' + "Pressure: " + weather.currently.pressure + '</p>' +
                     '</div>');
 
                 $('.Tomorrow-weather').empty().append(
-                    '<div class="d-flex-col justify-content-center">' +
-                    '<h5 class="d-flex justify-content-center">' + "Current Weather " + '</h5>' +
+                    '<div>' +
+                    '<h5>' + "Tomorrow " + '</h5>' +
                     '<img src="' + weatherType[weather.daily.data[1].icon] + '" class="mt-2" style="width: 30%">' +
-                    '<p class="d-flex justify-content-center mt-2">' + weather.daily.data[1].temperatureHigh + '° F' + ' / ' + weather.daily.data[1].temperatureLow + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "The Sky is " + weather.daily.data[1].summary + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "Humidity: " + weather.daily.data[1].humidity + "%" + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "Wind: " + weather.daily.data[1].windSpeed + " MPH" + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "Pressure: " + weather.daily.data[1].pressure + '</p>' +
+                    '<p>' + weather.daily.data[1].temperatureHigh + '° F' + ' / ' + weather.daily.data[1].temperatureLow + '</p>' +
+                    '<p>' + "The Sky is " + weather.daily.data[1].summary + '</p>' +
+                    '<p>' + "Humidity: " + weather.daily.data[1].humidity + "%" + '</p>' +
+                    '<p>' + "Wind: " + weather.daily.data[1].windSpeed + " MPH" + '</p>' +
+                    '<p>' + "Pressure: " + weather.daily.data[1].pressure + '</p>' +
                     '</div>');
 
                 $('.Next-weather').empty().append(
-                    '<div class="d-flex-col justify-content-center">' +
-                    '<h5 class="d-flex justify-content-center">' + "Current Weather " + '</h5>' +
+                    '<div>' +
+                    '<h5>' + "Next Day" + '</h5>' +
                     '<img src="' + weatherType[weather.daily.data[2].icon] + '" class="mt-2" style="width: 30%">' +
-                    '<p class="d-flex justify-content-center mt-2">' + weather.daily.data[2].temperatureHigh + '° F' + ' / ' + weather.daily.data[2].temperatureLow + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "The Sky is " + weather.daily.data[2].summary + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "Humidity: " + weather.daily.data[2].humidity + "%" + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "Wind: " + weather.daily.data[2].windSpeed + " MPH" + '</p>' +
-                    '<p class="d-flex justify-content-center mt-2">' + "Pressure: " + weather.daily.data[2].pressure + '</p>' +
+                    '<p>' + weather.daily.data[2].temperatureHigh + '° F' + ' / ' + weather.daily.data[2].temperatureLow + '</p>' +
+                    '<p>' + "The Sky is " + weather.daily.data[2].summary + '</p>' +
+                    '<p>' + "Humidity: " + weather.daily.data[2].humidity + "%" + '</p>' +
+                    '<p>' + "Wind: " + weather.daily.data[2].windSpeed + " MPH" + '</p>' +
+                    '<p>' + "Pressure: " + weather.daily.data[2].pressure + '</p>' +
                     '</div>');
-            })
-        }
+
+
+
 
 
         mapboxgl.accessToken = mapboxToken;
-
-        var mapOptions = {
+        var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
             zoom: 10,
-            center: [-98.4916, 29.4252],
-        };
-        var map = new mapboxgl.Map(mapOptions);
+            center: [-98.4916, 29.4252]
+        });
 
-        $('#go-getter').click(function(e){
-            e.preventDefault();
-            var longitude = long.value;
-            var latitude = lat.value;
+        // $('#go-getter').click(function(e) {
+        //     e.preventDefault();
+        //     var longitude = long.value;
+        //     var latitude = lat.value;
 
-            reverseGeocode({lng: longitude, lat: latitude}, mapboxToken).then(function(result){
-                geocode(result, mapboxToken).then(function(result2){
+
+
+            reverseGeocode({lng: longitude, lat: latitude}, mapboxToken).then(function (result) {
+                geocode(result, mapboxToken).then(function (result2) {
                     map.setCenter(result2);
                     map.setZoom(15);
-                    var marker = new mapboxgl.marker()
+                    var marker = new mapboxgl.Marker()
                         .setLngLat(result2)
-                        .addTo(Map);
+                        .addTo(map);
 
                 });
 
-        });
-        getWeather(lat.value, long.value);
-    });
+            })
 
+            });
+            getWeather(lat.value, long.value);
+        }
+    })
 
+    //FOR DRAGGABLE MARKER
 
-})
+    // var coordinates = document.getElementById('coordinates');
+    // var map = new mapboxgl.Map({
+    //     container: 'map',
+    //     style: 'mapbox://styles/mapbox/streets-v11',
+    //     center: [0, 0],
+    //     zoom: 2
+    // });
+    //
+    // var marker = new mapboxgl.Marker({
+    //     draggable: true
+    // })
+    //     .setLngLat([0, 0])
+    //     .addTo(map);
+    //
+    // function onDragEnd() {
+    //     var lngLat = marker.getLngLat();
+    //     coordinates.style.display = 'block';
+    //     coordinates.innerHTML =
+    //         'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+    // }
+    //
+    // marker.on('dragend', onDragEnd);
 
 </script>
 

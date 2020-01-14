@@ -29,7 +29,7 @@
 /**********************************************
  * 					MARKERS
  *********************************************/
-// Marker Docs --> https://docs.mapbox.com/mapbox-gl-js/api/#marker
+Marker Docs --> https://docs.mapbox.com/mapbox-gl-js/api/#marker
 // Markers are specific locations on a map
 //Use the .setLngLat() and .addTo() methods to add marker to the map
 
