@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Mapbox CSS -->
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
 
-<style>
 
     .main-jumbotron {
         background-image: url("https://media.giphy.com/media/KlMUO1YqJTA0o/giphy.gif");
@@ -21,6 +23,20 @@
         text-align: center;
         height: 30vh;
 
+    }
+
+    .coordinates {
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        padding: 5px 10px;
+        margin: 0;
+        font-size: 11px;
+        line-height: 18px;
+        border-radius: 3px;
+        display: none;
     }
 
 
@@ -47,10 +63,10 @@
     }
 
     #map{
-        display: flex;
-        justify-content: center;
-        height: 400px;
-        width: 800px;
+
+
+        width: 100%;
+        height: 500px;
     }
     #forecast-header {
         font-weight: bold;
@@ -69,7 +85,7 @@
 <body>
 
 <div class="main-jumbotron">
-    <h1 id = "header">Weather Application</h1>
+    <h1 id = "header"> <strong>Weather Application</strong></h1>
     <hr>
     <p id="forecast-header">3-DAY FORECAST</p>
 </div>
@@ -80,84 +96,94 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-4 mb-1">
-            <div class="Today-weather weatherCards" id="current_weather">
+            <div class="Today-weather weatherCards" id="current-weather">
             </div>
         </div>
         <div class="col-xs-12 col-md-4 mb-1">
-            <div class="Tomorrow-weather weatherCards" id="tomorrow_weather">
+            <div class="Tomorrow-weather weatherCards" id="tomorrow-weather">
             </div>
         </div>
         <div class="col-xs-12 col-md-4 mb-1">
-            <div class="Next-weather weatherCards" id="day_after">
+            <div class="Next-weather weatherCards" id="day-after">
             </div>
         </div>
     </div>
 </div>
 
-<form>
-    Latitude:<br>
+<!--<form>-->
+<!--    Latitude:<br>-->
 
-    <input type="text" name="latitude" placeholder="Enter Latitude Here" id="lat"><br>
-    Longitude:<br>
+<!--    <input type="text" name="latitude" placeholder="Enter Latitude Here" id="lat"><br>-->
+<!--    Longitude:<br>-->
 
-    <input type="text" name="longitude" placeholder="Enter Longitude Here" id="long"><br>
+<!--    <input type="text" name="longitude" placeholder="Enter Longitude Here" id="long"><br>-->
 
-    <input type="submit" value="Submit" id="locationEntry">
-</form>
+<!--    <input type="submit" value="Submit" id="locationEntry">-->
+<!--</form>-->
 
 
 
 <div id = 'map'></div>
 
+<!-- jQuery  -->
+<script
+        src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 
-<script src="JS/mapbox-geocoder-utils.js"></script>
+<!-- bootstrap  -->
 
-<script src="JS/keys.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
 <!-- Mapbox JS -->
+
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="JS/mapbox-geocoder-utils.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css' type='text/css' />
 <script src="JS/keys.js"></script>
 
-
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <script>
 
-    var weatherType = {
-            "clear-day": "img/clear-day.png",
-            "clear-night": "img/clear-night.png",
-            "rain": "img/rain.png",
-            "snow": "img/snow.png",
-            "sleet": "img/sleet.png",
-            "wind": "img/windy.png",
-            "fog": "img/fog.png",
-            "cloudy": "img/cloudy.png",
-            "partly-cloudy-day": "img/partly-cloudy.png",
-            "partly-cloudy-night": "img/partly-cloudy-night.png",
+    var weatherConditions =
+        [
+            {condition: "clear-day",icon: "img/clear-day.png"},
+            {condition: "clear-night",icon: "img/clear-night.png"},
+            {condition: "rain",icon: "img/rain.png"},
+            {condition: "snow",icon: "img/snow.png"},
+            {condition: "sleet",icon: "img/sleet.png"},
+            {condition: "wind",icon: "img/windy.png"},
+            {condition: "fog",icon:"img/fog.png"},
+            {condition: "cloudy",icon: "img/cloudy.png"},
+            {condition: "partly-cloudy-day",icon: "img/partly-cloudy.png"},
+            {condition: "partly-cloudy-night",icon: "img/partly-cloudy-night.png"},
 
-        };
+        ];
 
-"use strict";
 
-        $(document).ready(function () {
+    "use strict";
+    $(document).ready(function () {
 
-            getWeather(29.4241, -98.4936);
-            function getWeather(latitude, longitude) {
-                var weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + latitude  + ',' + longitude);
-                weather.done(function (weather) {
-                    // console.log(weather);
-                    for (var i = 0; i <= 2; i++) {
 
-                    }
+      function weatherCards(data, days) {
+          for(var i = 0; i <= 2; i++) ;
+
+          // var weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + latitude + ',' + longitude);
+          // weather.done(function (weather) {
+          //     // console.log(weather);
 
 
                     $('.Today-weather').empty().append(
                         '<div>' +
                         '<h5>' + "Current Weather " + '</h5>' +
-                        '<img src="' + weatherType[weather.daily.data[0].icon] + '" class="mt-2" style="width: 30%">' +
+                        '<img src="' + weatherConditions[weather.daily.data[0].icon] + '" class="mt-2" style="width: 30%">' +
                         '<p>' + weather.currently.temperature + '° F' + '</p>' +
                         '<p>' + "The Sky is " + weather.currently.summary + '</p>' +
                         '<p>' + "Humidity: " + weather.currently.humidity + "%" + '</p>' +
@@ -168,7 +194,7 @@
                     $('.Tomorrow-weather').empty().append(
                         '<div>' +
                         '<h5>' + "Tomorrow " + '</h5>' +
-                        '<img src="' + weatherType[weather.daily.data[1].icon] + '" class="mt-2" style="width: 30%">' +
+                        '<img src="' + weatherConditions[weather.daily.data[1].icon] + '" class="mt-2" style="width: 30%">' +
                         '<p>' + weather.daily.data[1].temperatureHigh + '° F' + ' / ' + weather.daily.data[1].temperatureLow + '</p>' +
                         '<p>' + "The Sky is " + weather.daily.data[1].summary + '</p>' +
                         '<p>' + "Humidity: " + weather.daily.data[1].humidity + "%" + '</p>' +
@@ -179,7 +205,7 @@
                     $('.Next-weather').empty().append(
                         '<div>' +
                         '<h5>' + "Next Day" + '</h5>' +
-                        '<img src="' + weatherType[weather.daily.data[2].icon] + '" class="mt-2" style="width: 30%">' +
+                        '<img src="' + weatherConditions[weather.daily.data[2].icon] + '" class="mt-2" style="width: 30%">' +
                         '<p>' + weather.daily.data[2].temperatureHigh + '° F' + ' / ' + weather.daily.data[2].temperatureLow + '</p>' +
                         '<p>' + "The Sky is " + weather.daily.data[2].summary + '</p>' +
                         '<p>' + "Humidity: " + weather.daily.data[2].humidity + "%" + '</p>' +
@@ -187,42 +213,80 @@
                         '<p>' + "Pressure: " + weather.daily.data[2].pressure + '</p>' +
                         '</div>');
 
-
-                    mapboxgl.accessToken = mapboxToken;
-                    var map = new mapboxgl.Map({
-                        container: 'map',
-                        style: 'mapbox://styles/mapbox/streets-v9',
-                        zoom: 10,
-                        center: [-98.4916, 29.4252]
-                    });
-
-                    $('#locationEntry').click(function (e) {
-                        e.preventDefault();
-                        var longitude = long.value;
-                        var latitude = lat.value;
+                    $(document).ready(function () {
 
 
-                        reverseGeocode({lng: longitude, lat: latitude}, mapboxToken).then(function (result) {
-                            geocode(result, mapboxToken).then(function (result2) {
-                                map.setCenter(result2);
-                                map.setZoom(15);
-                                var marker = new mapboxgl.Marker()
-                                    .setLngLat(result2)
-                                    .addTo(map);
+                        mapboxgl.accessToken = mapboxToken;
+                        var map = new mapboxgl.Map({
+                            container: 'map',
+                            style: 'mapbox://styles/mapbox/streets-v9',
+                            zoom: 4,
+
+                        });
+
+                        geocode("San Antonio, Texas", mapboxToken).then(function (data) {
+                            map.setCenter(data);
+                            var marker = new mapboxgl.Marker({
+                                draggable: true
+                            })
+                                .setLngLat(data)
+                                .addTo(map);
+
+                            map.addControl(new MapboxGeocoder({
+                                accessToken: mapboxToken
+                            }));
+
+                            var darkSkyUrl = ("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936");
+                            $.ajax(darkSkyUrl).done(function (data) {
+                                reverseGeocode({lng: -98.4936, lat: 29.4241}, mapboxToken).then(function (results) {
+                                    console.log(results);
+                                    results = results.split(",");
+                                    results = results.slice(0, 2);
+                                    results = results.join(",");
+                                    $("h2").html(results)
+                                });
+
+                                return weather
 
                             });
 
-                        })
 
-                    });
-                    getWeather(lat.value, long.value);
-                });
-            }
+                            function onDragEnd() {
 
-    });
+                                var lngLat = marker.getLngLat();
+
+                                //using marker latitude and longitude to add on to out URL
+                                var darkSkyUrl = "(https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + lngLat.lat + "," + lngLat.lng + " ";
+                                $.ajax(darkSkyUrl).done(function (data) {
+                                    // sets h2 with name of Current city
+                                    reverseGeocode({
+                                        lng: lngLat.lng,
+                                        lat: lngLat.lat
+                                    }, mapboxToken).then(function (results) {
+                                        console.log(results);
+                                        results = results.split(",");
+                                        results = results.slice(0, 2);
+                                        results = results.join(",");
+                                        $("h2").html(results)
+                                    });
+
+                                    //boxes for new information
+                                    return weather
 
 
-    //FOR DRAGGABLE MARKER
+                                })
+
+                            }
+
+                            //"event listener" for marker
+                            marker.on('dragend', onDragEnd);
+
+                        });
+
+
+               })
+
+    //FOR DRAGGABLE MARKEr
 
     // var coordinates = document.getElementById('coordinates');
     // var map = new mapboxgl.Map({
@@ -246,6 +310,17 @@
     // }
     //
     // marker.on('dragend', onDragEnd);
+
+    // $("#my_input").geocomplete({
+    //     map: "#my_map",
+    //     mapOptions: {
+    //         zoom: 10
+    //     },
+    //     markerOptions: {
+    //         draggable: true
+    //     },
+    //     details: "#my_form"
+    // });
 
 </script>
 

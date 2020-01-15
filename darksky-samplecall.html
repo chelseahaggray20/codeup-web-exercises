@@ -1,103 +1,206 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Accept coordinates as input to a geocoder</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>weather</title>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        body { margin: 0; padding: 0; }
-        #map { position: absolute; top: 0; bottom: 0; width: 100%; };
+
+        .main-jumbotron {
+            background-image: url("https://media.giphy.com/media/KlMUO1YqJTA0o/giphy.gif");
+
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            height: 30vh;
+
+        }
+
+        .coordinates {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            margin: 0;
+            font-size: 11px;
+            line-height: 18px;
+            border-radius: 3px;
+            display: none;
+        }
+
+        .box {
+            border: 1px solid dimgrey;
+            background-color: rgb(242,242,242);
+            width: 20%;
+
+        }
+
+        body {
+            background-color: rgb(173,220,251);
+
+        }
+
+
     </style>
 </head>
-<body>
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
 
-<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+<body>
+
+<div class="main-jumbotron">
+    <h1 id = "header"> <strong>Weather Application</strong></h1>
+    <hr>
+    <p id="forecast-header">3-DAY FORECAST</p>
+</div>
+
+<h2> </h2>
+<div id="container" class="mx-auto">
+
+    <div id="test" class="d-flex flex-row ml-5 mb-5"></div>
+
+    <div class="row ml-4 mr-4">
+        <div id='map' style='width: 100%; height: 400px;'></div>
+    </div>
+
+</div>
+
+<script
+        src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="JS/mapbox-geocoder-utils.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v3.1.4/mapbox-gl-geocoder.css' type='text/css' />
 <script src="JS/keys.js"></script>
-<div id="map"></div>
+
 
 <script>
-    mapboxgl.accessToken = mapboxToken;
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
-        center: [-98.4916, 29.4252]
-    });
-
-    /* given a query in the form "lng, lat" or "lat, lng" returns the matching
-    * geographic coordinate(s) as search results in carmen geojson format,
-    * https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-    */
-    var coordinatesGeocoder = function(query) {
-// match anything which looks like a decimal degrees coordinate pair
-        var matches = query.match(
-            /^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i
-        );
-        if (!matches) {
-            return null;
+    function weatherCards(data, maxday){
+        // console.log(data);
+        var html = "";
+        var img;
+        for(var i = 0; i < maxday; i++){
+            // for(var j = 0; j < weatherConditions.length; j++){
+            //     if(data.daily.data[i].icon === weatherConditions[j].condition){
+            //         img = "<img alt='icon' src="+ weatherConditions[j].icon + "/>"
+                }
+            }
+            html +="<div class='box'><p><strong>" + data.daily.data[i].temperatureHigh + "° " + "/ " + data.daily.data[i].apparentTemperatureLow + "°" + "</strong></p>"
+            html += img;
+            html += "<p>" + "<strong>Clouds: </strong>" + data.daily.data[i].summary + "</p>";
+            html += "<p>" + "<strong>Humidity: </strong>" + data.daily.data[i].humidity + "</p>";
+            html += "<p>" + "<strong>Wind: </strong>" + data.daily.data[i].windSpeed + "</p>";
+            html += "<p>" + "<strong>Pressure: </strong>" + data.daily.data[i].pressure + "</p></div>";
         }
+        $("#test").html(html)
+    }
 
-        function coordinateFeature(lng, lat) {
-            return {
-                center: [lng, lat],
-                geometry: {
-                    type: 'Point',
-                    coordinates: [lng, lat]
-                },
-                place_name: 'Lat: ' + lat + ' Lng: ' + lng,
-                place_type: ['coordinate'],
-                properties: {},
-                type: 'Feature'
-            };
-        }
+    var weatherConditions =
+        [
+            {condition: "clear-day",icon: "img/clear-day.png"},
+            {condition: "clear-night",icon: "img/clear-night.png"},
+            {condition: "rain",icon: "img/rain.png"},
+            {condition: "snow",icon: "img/snow.png"},
+            {condition: "sleet",icon: "img/sleet.png"},
+            {condition: "wind",icon: "img/windy.png"},
+            {condition: "fog",icon:"img/fog.png"},
+            {condition: "cloudy",icon: "img/cloudy.png"},
+            {condition: "partly-cloudy-day",icon: "img/partly-cloudy.png"},
+            {condition: "partly-cloudy-night",icon: "img/partly-cloudy-night.png"},
 
-        var coord1 = Number(matches[1]);
-        var coord2 = Number(matches[2]);
-        var geocodes = [];
+        ];
 
-        if (coord1 < -90 || coord1 > 90) {
-// must be lng, lat
-            geocodes.push(coordinateFeature(coord1, coord2));
-        }
+    $(document).ready(function () {
 
-        if (coord2 < -90 || coord2 > 90) {
-// must be lat, lng
-            geocodes.push(coordinateFeature(coord2, coord1));
-        }
+        // sets Map
+        mapboxgl.accessToken = mapboxToken;
 
-        if (geocodes.length === 0) {
-// else could be either lng, lat or lat, lng
-            geocodes.push(coordinateFeature(coord1, coord2));
-            geocodes.push(coordinateFeature(coord2, coord1));
-        }
-
-        return geocodes;
-    };
-
-    map.addControl(
-        new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            localGeocoder: coordinatesGeocoder,
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
             zoom: 4,
-            placeholder: 'Try: -40, 170',
-            mapboxgl: mapboxgl
-        })
-    );
 
-    getWeather(29.4241, -98.4936);
-    function getWeather(latitude, longitude) {
-        var weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky + "/" + latitude + ',' + longitude);
-        weather.done(function (weather) {
-            // console.log(weather);
-            for (var i = 0; i <= 2; i++) {
+        });
+
+        //Sets center of map at SA,TX
+
+        geocode("San Antonio, Texas", mapboxToken).then(function (data) {
+
+
+
+            map.setCenter(data);
+            var marker = new mapboxgl.Marker({
+                draggable: true
+            })
+                .setLngLat(data)
+                .addTo(map);
+
+            map.addControl(new MapboxGeocoder({
+                accessToken: mapboxToken
+            }));
+
+
+            //Sets SA,TX as default for darkSky
+            var darkSkyUrl = ("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936");
+            $.ajax(darkSkyUrl).done(function (data) {
+                reverseGeocode({lng: -98.4936, lat: 29.4241}, mapboxToken).then(function (results) {
+                    console.log(results);
+                    results = results.split(",");
+                    results = results.slice(0, 2);
+                    results = results.join(",");
+                    $("h2").html(results)
+                });
+
+                weatherCards(data, 3)
+
+            });
+
+            //Draggable marker function
+
+            function onDragEnd() {
+
+                var lngLat = marker.getLngLat();
+
+                //using marker latitude and longitude to add on to out URL
+                var darkSkyUrl = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + lngLat.lat + "," + lngLat.lng + ""
+                $.ajax(darkSkyUrl).done(function (data) {
+                    // sets header to with name of Current city
+                    reverseGeocode({lng: lngLat.lng, lat: lngLat.lat}, mapboxToken).then(function (results) {
+                        console.log(results);
+                        results = results.split(",");
+                        results = results.slice(0, 2);
+                        results = results.join(",");
+                        $("h2").html(results)
+                    });
+
+                    //boxes for new information
+                   weatherCards(data, 3);
+
+
+                })
 
             }
-</script>
+            //"event listener" for marker
+            marker.on('dragend', onDragEnd);
 
+        })
+
+
+    })
+</script>
 </body>
 </html>
