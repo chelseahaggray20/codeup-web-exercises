@@ -13,11 +13,7 @@
 </head>
 <body>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
-<link
-        rel="stylesheet"
-        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
-        type="text/css"
-/>
+
 <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
@@ -28,9 +24,9 @@
     mapboxgl.accessToken = mapboxToken;
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-79.4512, 43.6568],
-        zoom: 13
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-98.4916, 29.4252]
     });
 
     /* given a query in the form "lng, lat" or "lat, lng" returns the matching
@@ -92,6 +88,15 @@
             mapboxgl: mapboxgl
         })
     );
+
+    getWeather(29.4241, -98.4936);
+    function getWeather(latitude, longitude) {
+        var weather = $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSky + "/" + latitude + ',' + longitude);
+        weather.done(function (weather) {
+            // console.log(weather);
+            for (var i = 0; i <= 2; i++) {
+
+            }
 </script>
 
 </body>
