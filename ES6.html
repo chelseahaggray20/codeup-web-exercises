@@ -5,11 +5,47 @@
     <title>ES6</title>
 </head>
 <body>
+<script>
+const ourFunction = function(name) {
+    console.log(`Hello ${name}!`);
+
+    ourFunction("Europa");
+};
+
+
+//use parenthesis for multiple parameters using arrow method. Example (name, age)
+const newFunction = name => {
+    console.log(`Hello ${name}!`);
+};
+newFunction("Europa");
+
+let dog = {
+    name: "Kobe",
+    breed: "pitbull",
+}
+console.log("Our " + dog.breed + " is named " + dog.name + " ")
+    document.getElementById("message").innerHTML = '<p> Our $(dog.breed')
+
+
+
+
+var map = new Object();
+map[key1] = 'value1';
+map[key2] = 'value2';
+
+let map = new Map();
+> map.set('name', 'david');
+> map.get('name'); // david
+> map.has('name'); // true
+
+</script>
 
 
 
 
 
-<script src="JS/ES6.js"></script>
+
+
+<script src="JS/es6.js"></script>
 </body>
 </html>

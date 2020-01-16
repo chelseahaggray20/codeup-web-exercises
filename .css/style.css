@@ -1,5 +1,3 @@
-<link rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap">;
 
 .fancy-header {
     color: purple;
@@ -29,7 +27,7 @@ body {
 }
 
 table, tr, td, th {
-    padding: 20px
+    padding: 20px;
     font-size: x-large;
 }
 
