@@ -6,6 +6,7 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Gayathri|Oswald&display=swap" rel="stylesheet">
     <style>
 
         .main-jumbotron {
@@ -20,14 +21,38 @@
 
 
 
-        .box{
 
-            background-color: lightgray;
-            border: 1px solid gray;
+
+        .box{
+            font-family: 'Gayathri', sans-serif;
+            align-content: middle;
             text-align: center;
+            height: 400px;
+            background-color: lightskyblue;
+            background-image: linear-gradient(lightskyblue, navy );
+            color: ghostwhite;
+            border: 2px solid dimgrey;
+            width: 100%;
         }
 
+        .box-header{
+            text-align: center;
+            font-size: x-large;
+            font-weight: bolder;
+        }
+
+        .cloud-sum{
+            font-family: 'Oswald', sans-serif;
+            font-weight: bolder;
+        }
+
+
+
+
+
+
         body {
+            align-content: center;
             background-color: rgb(173,220,251);
 
         }
@@ -49,11 +74,11 @@
 <div class="main-jumbotron">
     <h1 id = "header"> <strong>Weather Application</strong></h1>
     <hr>
-    <p id="forecast-header">3-DAY FORECAST</p>
+    <p id="forecast-header">5-DAY FORECAST</p>
 </div>
 
 
-<div id="container" class="mx-auto">
+<div id="container" class="max-auto">
 
     <div id="test" class="d-flex flex-row ml-5 mb-5"></div>
 
@@ -84,116 +109,118 @@
 
 
 <script>
-    function weatherCards(data){
+    function weatherCards(data) {
 
         // console.log(data);
         var html = "";
         var img;
-        for(var i = 0; i <=2; i++){
-            for(var j = 0; j < weatherConditions.length; j++){
-                if(data.daily.data[i].icon === weatherConditions[j].condition){
-                    img = "<img alt='icon' src="+ weatherConditions[j].icon + "/>"
+        for (var i = 0; i <= 4; i++) {
+            for (var j = 0; j < weatherConditions.length; j++) {
+                if (data.daily.data[i].icon === weatherConditions[j].condition) {
+                    img = "<img alt='icon' src=" + weatherConditions[j].icon + "/>"
+                }
+            }
+            html += "<div class='box'>";
+            html += "<p class='box-header'>" + data.daily.data[i].temperatureHigh + "°" + "/" + data.daily.data[i].apparentTemperatureLow + "°" + "</p>";
+            html += img;
+            html += "<p class='cloud-sum'>" + " "+ data.daily.data[i].summary + "</p>";
+            html += "<p>" + "<strong>Humidity: </strong>" + data.daily.data[i].humidity + "</p>";
+            html += "<p>" + "<strong>Wind: </strong>" + data.daily.data[i].windSpeed + "</p>";
+            html += "<p>" + "<strong>Pressure: </strong>" + data.daily.data[i].pressure + "</p></div>";
         }
-    }
-    html +="<div class='box'><p><strong>" + data.daily.data[i].temperatureHigh + "° " + "/ " + data.daily.data[i].apparentTemperatureLow + "°" + "</strong></p>"
-    html += img;
-    html += "<p>" + "<strong>Clouds: </strong>" + data.daily.data[i].summary + "</p>";
-    html += "<p>" + "<strong>Humidity: </strong>" + data.daily.data[i].humidity + "</p>";
-    html += "<p>" + "<strong>Wind: </strong>" + data.daily.data[i].windSpeed + "</p>";
-    html += "<p>" + "<strong>Pressure: </strong>" + data.daily.data[i].pressure + "</p></div>";
-    }
-    $("#test").html(html)
-    }
-
-    var weatherConditions =
-        [
-            {condition: "clear-day",icon: "img/clear-day.png"},
-            {condition: "clear-night",icon: "img/clear-night.png"},
-            {condition: "rain",icon: "img/rain.png"},
-            {condition: "snow",icon: "img/snow.png"},
-            {condition: "sleet",icon: "img/sleet.png"},
-            {condition: "wind",icon: "img/windy.png"},
-            {condition: "fog",icon:"img/fog.png"},
-            {condition: "cloudy",icon: "img/cloudy.png"},
-            {condition: "partly-cloudy-day",icon: "img/partly-cloudy.png"},
-            {condition: "partly-cloudy-night",icon: "img/partly-cloudy-night.png"},
-
-        ];
-
-    $(document).ready(function () {
-
-        // sets Map
-        mapboxgl.accessToken = mapboxToken;
-
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v9',
-            zoom: 4,
-
-        });
-
-        //Sets center of map at SA,TX
-
-        geocode("San Antonio, Texas", mapboxToken).then(function (data) {
-
-
-
-            map.setCenter(data);
-            var marker = new mapboxgl.Marker({
-                draggable: true
-            })
-                .setLngLat(data)
-                .addTo(map);
-
-            map.addControl(new MapboxGeocoder({
-                accessToken: mapboxToken
-            }));
-
-
-            //Sets SA,TX as default for darkSky
-            var darkSkyUrl = ("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936");
-            $.ajax(darkSkyUrl).done(function (data) {
-                reverseGeocode({lng: -98.4936, lat: 29.4241}, mapboxToken).then(function (results) {
-                    console.log(results);
-                    results = results.split(",");
-                    results = results.slice(0, 2);
-                    results = results.join(",");
-                    $("h2").html(results)
-                });
-
-                weatherCards(data, 3)
-
-            });
-
-            //Draggable marker function
-
-            function onDragEnd() {
-
-                var lngLat = marker.getLngLat();
-
-                //using marker latitude and longitude to add on to out URL
-                var darkSkyUrl = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + lngLat.lat + "," + lngLat.lng + ""
-                $.ajax(darkSkyUrl).done(function (data) {
-                    // sets header to with name of Current city
-                    reverseGeocode({lng: lngLat.lng, lat: lngLat.lat}, mapboxToken).then(function (results) {
-                        console.log(results);
-                        results = results.split(",");
-                        results = results.slice(0, 2);
-                        results = results.join(",");
-                        $("h2").html(results)
-                    });
-
-                    //boxes for new information
-                    weatherCards(data, 3);
-
-
-                })
+                $("#test").html(html)
 
             }
-            //"event listener" for marker
-            marker.on('dragend', onDragEnd);
+            var weatherConditions =
+                [
+                    {condition: "clear-day", icon: "img/clear-day.png"},
+                    {condition: "clear-night", icon: "img/clear-night.png"},
+                    {condition: "rain", icon: "img/rain.png"},
+                    {condition: "snow", icon: "img/snow.png"},
+                    {condition: "sleet", icon: "img/sleet.png"},
+                    {condition: "wind", icon: "img/windy.png"},
+                    {condition: "fog", icon: "img/fog.png"},
+                    {condition: "cloudy", icon: "img/cloudy.png"},
+                    {condition: "partly-cloudy-day", icon: "img/partly-cloudy.png"},
+                    {condition: "partly-cloudy-night", icon: "img/partly-cloudy-night.png"},
 
-        })
+                ];
+
+            $(document).ready(function () {
+
+                // sets Map
+                mapboxgl.accessToken = mapboxToken;
+
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v9',
+                    zoom: 4,
+
+                });
+
+                //Sets center of map at SA,TX
+
+                geocode("San Antonio, Texas", mapboxToken).then(function (data) {
+
+
+                    map.setCenter(data);
+                    var marker = new mapboxgl.Marker({
+                        draggable: true
+                    })
+                        .setLngLat(data)
+                        .addTo(map);
+
+                    map.addControl(new MapboxGeocoder({
+                        accessToken: mapboxToken
+                    }));
+
+
+                    //Sets SA,TX as default for darkSky
+                    var darkSkyUrl = ("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936");
+                    $.ajax(darkSkyUrl).done(function (data) {
+                        reverseGeocode({lng: -98.4936, lat: 29.4241}, mapboxToken).then(function (results) {
+                            console.log(results);
+                            results = results.split(",");
+                            results = results.slice(0, 2);
+                            results = results.join(",");
+                            $("h2").html(results)
+                        });
+
+                        weatherCards(data, 5)
+
+                    });
+
+                    //Draggable marker function
+
+                    function onDragEnd() {
+
+                        var lngLat = marker.getLngLat();
+
+                        //using marker latitude and longitude to add on to out URL
+                        var darkSkyUrl = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + lngLat.lat + "," + lngLat.lng + ""
+                        $.ajax(darkSkyUrl).done(function (data) {
+                            // sets header to with name of Current city
+                            reverseGeocode({lng: lngLat.lng, lat: lngLat.lat}, mapboxToken).then(function (results) {
+                                console.log(results);
+                                results = results.split(",");
+                                results = results.slice(0, 2);
+                                results = results.join(",");
+                                $("h2").html(results)
+                            });
+
+                            //boxes for new information
+                            weatherCards(data, 5);
+
+
+                        })
+
+                    }
+
+                    //"event listener" for marker
+                    marker.on('dragend', onDragEnd);
+
+                });
+
 
 
     })
