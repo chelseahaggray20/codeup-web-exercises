@@ -1,3 +1,4 @@
+"use strict";
 const users = [
     {
         id: 1,
@@ -85,7 +86,7 @@ console.log(instructors);
 
 let languages = users.reduce((languages, user) => {
     //filter the user.languages for the ones not included in languages list.
-    languages.push(user.languages.filter()
+    languages.push(user.languages.filter());
 
     return languages
 }, []);
