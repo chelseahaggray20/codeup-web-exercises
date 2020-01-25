@@ -95,5 +95,3 @@ let languages = users.reduce((languages, user) => {
 
 
 
-
-
